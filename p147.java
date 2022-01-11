@@ -1,12 +1,12 @@
 
-package com.caiomed03.aceptaelreto;
+package com.caiomed03.trabajo2Ev;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class p460 {
+public class p147 {
     static class FastReader {
 
         BufferedReader br;
@@ -71,14 +71,11 @@ public class p460 {
         FastReader sc = new FastReader();
         
         while (sc.hasNext()) {
-            String s1 = sc.next();
+            int nCerillas = sc.nextInt();
+            int cerillasQueSePuedenCogerMax= sc.nextInt();
             
-            for(int i=0; i<s1.length(); i++){
-                System.out.print(s1.charAt(i));
-                if(i==s1.length()-1)continue;
-                System.out.print("0");
-            }
-            System.out.println("");
+            if((nCerillas-1)%(cerillasQueSePuedenCogerMax+1)==0) System.out.println("PIERDO");
+            else System.out.println((nCerillas-1)%(cerillasQueSePuedenCogerMax+1));
         }
     }
 }

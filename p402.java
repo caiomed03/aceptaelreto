@@ -1,4 +1,3 @@
-
 package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
@@ -6,7 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class p460 {
+public class p402 {
+
     static class FastReader {
 
         BufferedReader br;
@@ -49,6 +49,7 @@ public class p460 {
             }
             return str;
         }
+
         boolean hasNext() {
             if (st != null && st.hasMoreTokens()) {
                 return true;
@@ -67,18 +68,18 @@ public class p460 {
             return true;
         }
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         FastReader sc = new FastReader();
-        
-        while (sc.hasNext()) {
-            String s1 = sc.next();
-            
-            for(int i=0; i<s1.length(); i++){
-                System.out.print(s1.charAt(i));
-                if(i==s1.length()-1)continue;
-                System.out.print("0");
+        int nPiezas = sc.nextInt();
+
+        while (!(nPiezas == 0)) {
+            int raiz = (int) Math.sqrt(nPiezas);
+            while (nPiezas % raiz != 0) {
+                raiz--;
             }
-            System.out.println("");
+            System.out.println(nPiezas/raiz);
+            nPiezas = sc.nextInt();
         }
     }
 }

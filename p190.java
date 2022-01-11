@@ -1,12 +1,14 @@
-
 package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class p460 {
+public class p190 {
+
     static class FastReader {
 
         BufferedReader br;
@@ -49,6 +51,7 @@ public class p460 {
             }
             return str;
         }
+
         boolean hasNext() {
             if (st != null && st.hasMoreTokens()) {
                 return true;
@@ -66,19 +69,37 @@ public class p460 {
             }
             return true;
         }
+
+        public BigInteger nextBigInteger() {
+            return new BigInteger(next());
+        }
     }
-    public static void main(String[] args){
+
+    public static BigInteger factorial(BigInteger n) {
+        if (n.equals(BigInteger.ZERO)) {
+            return BigInteger.ONE;
+        } else {
+            return n.multiply(factorial(n.subtract(BigInteger.ONE)));
+        }
+    }
+
+    public static void main(String[] args) {
         FastReader sc = new FastReader();
-        
-        while (sc.hasNext()) {
-            String s1 = sc.next();
-            
-            for(int i=0; i<s1.length(); i++){
-                System.out.print(s1.charAt(i));
-                if(i==s1.length()-1)continue;
-                System.out.print("0");
+        long n = sc.nextLong();
+        long n2 = sc.nextLong();
+
+        while (n >= n2) {
+            long res = 1;
+            if (n == 0 && n2 == 0) {
+                res = 1;
+            } else if (!(n == 0 && n2 == 0)) {
+                for (long i = n; i != n2; i--) {
+                    res *= i;
+                }
             }
-            System.out.println("");
+            System.out.println(res);
+            n = sc.nextLong();
+            n2 = sc.nextLong();
         }
     }
 }

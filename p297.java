@@ -1,4 +1,4 @@
-package com.caiomed03.aceptaelreto;
+package com.caiomed03.trabajo2Ev;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -69,20 +69,20 @@ public class p297 {
         }
     }
 
-    public static long calculoMedio(long n, String m) {
+    public static long calculoMedio(long num, String m) {
         switch (m) {
             case "o":
-                return n;
+                return num;
             case "da":
-                return n * 10;
+                return num * 10;
             case "h":
-                return n * 100;
+                return num * 100;
             case "k":
-                return n * 1000;
+                return num * 1000;
             case "M":
-                return n * 1000000;
+                return num * 1000000;
             case "G":
-                return n * 1000000000;
+                return num * 1000000000;
         }
         return 0;
     }
@@ -106,22 +106,23 @@ public class p297 {
         return num + " o";
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         FastReader sc = new FastReader();
-
-        long n, sum=0;
-        String m;
         int casosPrueba = sc.nextInt();
+        long num, res;
+        String m;
 
         for (int i = 0; i < casosPrueba; i++) {
-            sum = 0;
+            res = 0;
             while (true) {
-                n = sc.nextLong();
-                if (n == 0) break;
+                num = sc.nextLong();
+                if (num == 0) {
+                    break;
+                }
                 m = sc.next();
-                sum += calculoMedio(n, m);
+                res += calculoMedio(num, m);
             }
-            System.out.println(calcularRes(sum));
+            System.out.println(calcularRes(res));
         }
 
     }
