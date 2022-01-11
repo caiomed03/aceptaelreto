@@ -1,4 +1,4 @@
-package com.caiomed03.trabajo2Ev;
+package com.caiomed03.aceptaelreto;
 
 import java.util.Scanner;
 

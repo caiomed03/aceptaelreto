@@ -3,9 +3,11 @@ package com.caiomed03.aceptaelreto;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class p297 {
+public class p523 {
 
     static class FastReader {
 
@@ -69,62 +71,33 @@ public class p297 {
         }
     }
 
-    public static long calculoMedio(long num, String m) {
-        switch (m) {
-            case "o":
-                return num;
-            case "da":
-                return num * 10;
-            case "h":
-                return num * 100;
-            case "k":
-                return num * 1000;
-            case "M":
-                return num * 1000000;
-            case "G":
-                return num * 1000000000;
-        }
-        return 0;
-    }
-
-    public static String calcularRes(long num) {
-        if (num % 1000000000 == 0) {
-            return (num / 1000000000) + " G";
-        }
-        if (num % 1000000 == 0) {
-            return (num / 1000000) + " M";
-        }
-        if (num % 1000 == 0) {
-            return (num / 1000) + " k";
-        }
-        if (num % 100 == 0) {
-            return (num / 100) + " h";
-        }
-        if (num % 10 == 0) {
-            return (num / 10) + " da";
-        }
-        return num + " o";
-    }
-
     public static void main(String[] args) {
-        FastReader sc = new FastReader();
+        Scanner sc = new Scanner(System.in);
         int casosPrueba = sc.nextInt();
-        long num, res;
-        String m;
 
         for (int i = 0; i < casosPrueba; i++) {
-            res = 0;
-            while (true) {
-                num = sc.nextLong();
-                if (num == 0) {
-                    break;
+            String matriculaEdu = sc.next();
+            String letrasEdu = matriculaEdu.substring(4, matriculaEdu.length());
+            int numerosEdu = Integer.parseInt(matriculaEdu.substring(0, 4));
+            String aux = sc.next();
+            int masModerno = 0;
+            int masViejo = 0;
+            while (!aux.equals("0")) {
+                String letras = aux.substring(4, aux.length());
+                int numeros = Integer.parseInt(aux.substring(0, 4));
+                if (letrasEdu.compareTo(letras) != 0) {
+                    if (letrasEdu.compareTo(letras)>0) {
+                        masModerno++;
+                    } else {
+                        masViejo++;
+                    }
+                } else {
+                    if(numerosEdu>numeros) masModerno++;
+                    else masViejo++;
                 }
-                m = sc.next();
-                res += calculoMedio(num, m);
+                aux = sc.next();
             }
-            System.out.println(calcularRes(res));
+            System.out.println(masModerno + " " + masViejo);
         }
-
     }
-
 }
