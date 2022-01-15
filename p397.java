@@ -1,14 +1,13 @@
+
 package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
-public class p116 {
-
+public class p397 {
     static class FastReader {
 
         BufferedReader br;
@@ -51,18 +50,31 @@ public class p116 {
             }
             return str;
         }
-    }
-
-    public static void main(String[] args) throws IOException {
-        int casosPrueba;
-        FastReader sc = new FastReader();
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        casosPrueba = sc.nextInt();
-
-        for (; casosPrueba != 0; casosPrueba--) {
-            output.write("Hola mundo.\n");
+        boolean hasNext() {
+            if (st != null && st.hasMoreTokens()) {
+                return true;
+            }
+            String tmp;
+            try {
+                br.mark(1000);
+                tmp = br.readLine();
+                if (tmp == null) {
+                    return false;
+                }
+                br.reset();
+            } catch (IOException e) {
+                return false;
+            }
+            return true;
         }
-        output.flush();
+    }
+    public static void main(String[] args){
+        FastReader sc = new FastReader();
+        int casosPrueba = sc.nextInt();
+        while(casosPrueba--!=0){
+            long n = sc.nextInt();
+            if((n*(n+1)/2)%3==0) System.out.println("SI");
+            else System.out.println("NO");
+        }
     }
 }

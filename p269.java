@@ -1,13 +1,12 @@
 package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class p116 {
+public class p269 {
 
     static class FastReader {
 
@@ -51,18 +50,47 @@ public class p116 {
             }
             return str;
         }
-    }
 
-    public static void main(String[] args) throws IOException {
-        int casosPrueba;
-        FastReader sc = new FastReader();
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        casosPrueba = sc.nextInt();
-
-        for (; casosPrueba != 0; casosPrueba--) {
-            output.write("Hola mundo.\n");
+        boolean hasNext() {
+            if (st != null && st.hasMoreTokens()) {
+                return true;
+            }
+            String tmp;
+            try {
+                br.mark(1000);
+                tmp = br.readLine();
+                if (tmp == null) {
+                    return false;
+                }
+                br.reset();
+            } catch (IOException e) {
+                return false;
+            }
+            return true;
         }
-        output.flush();
+    }
+    public static int sumador(ArrayList<Integer> a, int index){
+        int sum =0;
+        for(int i=0; i<=index; i++){
+            sum+=a.get(i);
+        }
+        return sum;
+    }
+    public static void main(String[] args) {
+        FastReader sc = new FastReader();
+        int casosPrueba = sc.nextInt();
+        while (casosPrueba-- != 0) {
+            ArrayList<Integer> nums = new ArrayList<>();
+            int n = sc.nextInt();
+            int sum = 0;
+            while (n != 0) {
+                nums.add(n);
+                n = sc.nextInt();
+            }
+            for (int i = 0; i < nums.size(); i++) {
+                sum += sumador(nums, i);
+            }
+            System.out.println(sum*2);
+        }
     }
 }

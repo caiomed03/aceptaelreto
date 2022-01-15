@@ -1,13 +1,11 @@
 package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class p116 {
+public class p312 {
 
     static class FastReader {
 
@@ -51,18 +49,46 @@ public class p116 {
             }
             return str;
         }
+
+        boolean hasNext() {
+            if (st != null && st.hasMoreTokens()) {
+                return true;
+            }
+            String tmp;
+            try {
+                br.mark(1000);
+                tmp = br.readLine();
+                if (tmp == null) {
+                    return false;
+                }
+                br.reset();
+            } catch (IOException e) {
+                return false;
+            }
+            return true;
+        }
     }
 
-    public static void main(String[] args) throws IOException {
-        int casosPrueba;
-        FastReader sc = new FastReader();
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        casosPrueba = sc.nextInt();
-
-        for (; casosPrueba != 0; casosPrueba--) {
-            output.write("Hola mundo.\n");
+    public static long mcd(long a, long b) {
+        if (b == 0) {
+            return a;
         }
-        output.flush();
+        return mcd(b, a % b);
+    }
+
+    public static void main(String[] args) {
+        FastReader sc = new FastReader();
+        long a = sc.nextLong();
+
+        while (a != 0) {
+            long sum = a, gcd = a;
+            while (a != 0) {
+                sum += a;
+                gcd = mcd(gcd, a);
+                a = sc.nextLong();
+            }
+            System.out.println(sum/gcd);
+            a = sc.nextLong();
+        }
     }
 }
