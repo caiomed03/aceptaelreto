@@ -1,13 +1,13 @@
-
-package com.caiomed03.aceptaelreto;
+    package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
-public class p597 {
+public class p613 {
+
     static class FastReader {
 
         BufferedReader br;
@@ -50,6 +50,7 @@ public class p597 {
             }
             return str;
         }
+
         boolean hasNext() {
             if (st != null && st.hasMoreTokens()) {
                 return true;
@@ -68,20 +69,22 @@ public class p597 {
             return true;
         }
     }
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int casosPrueba = sc.nextInt();
-        
-        while (casosPrueba-- != 0) {
-            int tamaño=sc.nextInt();
-            int personaAnterior = sc.nextInt();
-            int cont=0;
-            for(int i=0; i<tamaño-1; i++){
-                int persona2 = sc.nextInt();
-                if(personaAnterior>persona2) cont++;
-                personaAnterior = persona2;
+
+    public static void main(String[] args) {
+        FastReader sc = new FastReader();
+
+        while (sc.hasNext()) {
+            int n = sc.nextInt();
+            String x = "1";
+            BigInteger n2 = new BigInteger(String.valueOf(n));
+            BigInteger x2 = new BigInteger(x);
+            int i=0;
+            while (!x2.mod(n2).equals(BigInteger.ZERO)) {
+                i++;
+                x += "1";
+                x2 = new BigInteger(x);
             }
-            System.out.println(cont);
+            System.out.println(i+1);
         }
     }
 }

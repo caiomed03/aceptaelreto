@@ -4,10 +4,9 @@ package com.caiomed03.aceptaelreto;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class p597 {
+public class p403 {
     static class FastReader {
 
         BufferedReader br;
@@ -69,19 +68,15 @@ public class p597 {
         }
     }
     public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
+        FastReader sc = new FastReader();
         int casosPrueba = sc.nextInt();
-        
+        int campoMin = 90*45;
+        int campoMax = 90*120;
         while (casosPrueba-- != 0) {
-            int tamaño=sc.nextInt();
-            int personaAnterior = sc.nextInt();
-            int cont=0;
-            for(int i=0; i<tamaño-1; i++){
-                int persona2 = sc.nextInt();
-                if(personaAnterior>persona2) cont++;
-                personaAnterior = persona2;
-            }
-            System.out.println(cont);
+            int medidaReal = sc.nextInt();
+            int medidaEnCampo = sc.nextInt();
+            if(campoMin*medidaEnCampo<=medidaReal && medidaReal<=campoMax*medidaEnCampo) System.out.println("SI");
+            else System.out.println("NO");
         }
     }
 }

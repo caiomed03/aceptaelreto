@@ -1,13 +1,12 @@
 
-package com.caiomed03.aceptaelreto;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class p597 {
+public class p475 {
+
     static class FastReader {
 
         BufferedReader br;
@@ -50,6 +49,7 @@ public class p597 {
             }
             return str;
         }
+
         boolean hasNext() {
             if (st != null && st.hasMoreTokens()) {
                 return true;
@@ -68,20 +68,41 @@ public class p597 {
             return true;
         }
     }
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int casosPrueba = sc.nextInt();
-        
-        while (casosPrueba-- != 0) {
-            int tamaño=sc.nextInt();
-            int personaAnterior = sc.nextInt();
-            int cont=0;
-            for(int i=0; i<tamaño-1; i++){
-                int persona2 = sc.nextInt();
-                if(personaAnterior>persona2) cont++;
-                personaAnterior = persona2;
+
+    public static void main(String[] args) {
+
+        FastReader s = new FastReader();
+
+        int casos = s.nextInt();
+        String frase;
+        String nombre = "stanlee";
+        int pos;
+        int repeat;
+
+        for (int i = 0; i < casos; i++) {
+
+            frase = s.nextLine();
+            frase = frase.trim().toLowerCase();
+
+            pos = 0;
+            repeat = 0;
+
+            for (int j = 0; j < frase.length(); j++) {
+
+                if (frase.charAt(j) == nombre.charAt(pos)) {
+                    pos++;
+                }
+                if (pos == nombre.length()) {
+                    pos = 0;
+                    repeat++;
+                }
+
             }
-            System.out.println(cont);
+
+            System.out.println(repeat);
+
         }
+
     }
+
 }
