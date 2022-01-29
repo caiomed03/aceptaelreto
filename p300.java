@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class p156 {
+public class p300 {
     static class FastReader {
 
         BufferedReader br;
@@ -49,22 +49,41 @@ public class p156 {
             }
             return str;
         }
+        boolean hasNext() {
+            if (st != null && st.hasMoreTokens()) {
+                return true;
+            }
+            String tmp;
+            try {
+                br.mark(1000);
+                tmp = br.readLine();
+                if (tmp == null) {
+                    return false;
+                }
+                br.reset();
+            } catch (IOException e) {
+                return false;
+            }
+            return true;
+        }
     }
     public static void main(String[] args){
         FastReader sc = new FastReader();
-        int piso = sc.nextInt();
-        int piso2;
-        int cont;
-        while(piso>=0){
-            piso2 = sc.nextInt();
-            cont = 0;
-            while(piso2>=0){
-                cont += Math.abs(piso-piso2);
-                piso = piso2;
-                piso2 = sc.nextInt();
+        int casosPrueba = sc.nextInt();
+        
+        while (casosPrueba-- != 0) {
+            String s1 = sc.next();
+            boolean a,e, i, o, u;
+            a=e=i=o=u=false;
+            for(int j=0; j<s1.length(); j++){
+                if(s1.charAt(j)=='a') a = true;
+                else if(s1.charAt(j)=='e') e= true;
+                else if(s1.charAt(j)=='i') i= true;
+                else if(s1.charAt(j)=='o') o=true;
+                else if(s1.charAt(j)=='u') u=true;
             }
-            System.out.println(cont);
-            piso = sc.nextInt();
+            if(a && e && i && o && u) System.out.println("SI");
+            else System.out.println("NO");
         }
     }
 }

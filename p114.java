@@ -1,4 +1,3 @@
-
 package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
@@ -6,7 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class p156 {
+public class p114 {
+
     static class FastReader {
 
         BufferedReader br;
@@ -49,22 +49,37 @@ public class p156 {
             }
             return str;
         }
-    }
-    public static void main(String[] args){
-        FastReader sc = new FastReader();
-        int piso = sc.nextInt();
-        int piso2;
-        int cont;
-        while(piso>=0){
-            piso2 = sc.nextInt();
-            cont = 0;
-            while(piso2>=0){
-                cont += Math.abs(piso-piso2);
-                piso = piso2;
-                piso2 = sc.nextInt();
+
+        boolean hasNext() {
+            if (st != null && st.hasMoreTokens()) {
+                return true;
             }
-            System.out.println(cont);
-            piso = sc.nextInt();
+            String tmp;
+            try {
+                br.mark(1000);
+                tmp = br.readLine();
+                if (tmp == null) {
+                    return false;
+                }
+                br.reset();
+            } catch (IOException e) {
+                return false;
+            }
+            return true;
+        }
+    }
+
+    public static void main(String[] args) {
+        FastReader sc = new FastReader();
+        int casosPrueba = sc.nextInt();
+
+        while (casosPrueba-- != 0) {
+            int n = sc.nextInt();
+            if (n > 4) System.out.println("0");
+            else if (n == 4) System.out.println("4");
+            else if (n == 3) System.out.println("6");
+            else if (n == 2) System.out.println("2");
+            else System.out.println("1");
         }
     }
 }

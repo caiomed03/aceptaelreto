@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class p156 {
+public class p335 {
     static class FastReader {
 
         BufferedReader br;
@@ -49,22 +49,36 @@ public class p156 {
             }
             return str;
         }
+        boolean hasNext() {
+            if (st != null && st.hasMoreTokens()) {
+                return true;
+            }
+            String tmp;
+            try {
+                br.mark(1000);
+                tmp = br.readLine();
+                if (tmp == null) {
+                    return false;
+                }
+                br.reset();
+            } catch (IOException e) {
+                return false;
+            }
+            return true;
+        }
     }
+
     public static void main(String[] args){
         FastReader sc = new FastReader();
-        int piso = sc.nextInt();
-        int piso2;
-        int cont;
-        while(piso>=0){
-            piso2 = sc.nextInt();
-            cont = 0;
-            while(piso2>=0){
-                cont += Math.abs(piso-piso2);
-                piso = piso2;
-                piso2 = sc.nextInt();
+        long casosPrueba = sc.nextLong();
+        
+        while (casosPrueba-- != 0) {
+            long n = sc.nextLong();
+            long sum = 0;
+            for(long i=n; i!=-1; i--){
+                sum += i*(i+1)/2;
             }
-            System.out.println(cont);
-            piso = sc.nextInt();
+            System.out.println(sum);
         }
     }
 }
