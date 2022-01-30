@@ -3,10 +3,11 @@ package com.caiomed03.aceptaelreto;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
+import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class p564 {
+public class p420 {
 
     static class FastReader {
 
@@ -68,36 +69,38 @@ public class p564 {
             }
             return true;
         }
-
-        public BigInteger nextBigInteger() {
-            return new BigInteger(next());
-        }
-    }
-
-    static boolean isPowerOfTwo(int n) {
-        if (n == 0) {
-            return false;
-        }
-
-        return (int) (Math.ceil((Math.log(n) / Math.log(2))))
-                == (int) (Math.floor(((Math.log(n) / Math.log(2)))));
     }
 
     public static void main(String[] args) {
-        FastReader sc = new FastReader();
-        int casosPrueba = sc.nextInt();
 
-        while (casosPrueba-- != 0) {
-            int n = sc.nextInt();
-            int sum = 0;
-            if (n < 3) {
-            } else {
-                for(int i=1; i*7<=Math.pow(2, n); i++){
-                    if(i*7<=Math.pow(2, n)) sum++;
-                    else break;
+        FastReader s = new FastReader();
+
+        int C = s.nextInt();
+        int target, sum, res;
+        LinkedList<Integer> stack = new LinkedList<>();
+        char[] input;
+
+        while (C-- != 0) {
+            target = s.nextInt();
+            input = s.next().toCharArray();
+
+            res = sum = 0;
+            for (char c : input) {
+                int n = Integer.parseInt(c + "");
+                sum += n;
+                stack.addLast(n);
+                if (sum == target) {
+                    res++;
+                }
+                while (sum > target) {
+                    sum -= stack.removeFirst();
+                    if (sum == target) {
+                        res++;
+                    }
                 }
             }
-            System.out.println(sum);
+            System.out.println(res);
+            stack.clear();
         }
     }
 }

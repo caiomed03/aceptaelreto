@@ -3,10 +3,12 @@ package com.caiomed03.aceptaelreto;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 
-public class p564 {
+public class p268 {
 
     static class FastReader {
 
@@ -68,36 +70,41 @@ public class p564 {
             }
             return true;
         }
-
-        public BigInteger nextBigInteger() {
-            return new BigInteger(next());
-        }
-    }
-
-    static boolean isPowerOfTwo(int n) {
-        if (n == 0) {
-            return false;
-        }
-
-        return (int) (Math.ceil((Math.log(n) / Math.log(2))))
-                == (int) (Math.floor(((Math.log(n) / Math.log(2)))));
     }
 
     public static void main(String[] args) {
         FastReader sc = new FastReader();
-        int casosPrueba = sc.nextInt();
 
-        while (casosPrueba-- != 0) {
-            int n = sc.nextInt();
-            int sum = 0;
-            if (n < 3) {
-            } else {
-                for(int i=1; i*7<=Math.pow(2, n); i++){
-                    if(i*7<=Math.pow(2, n)) sum++;
-                    else break;
+        int nPlatos = sc.nextInt();
+        int nCoronas = sc.nextInt();
+
+        while (!(nPlatos == 0 && nCoronas == 0)) {
+            ArrayList<Integer> platos = new ArrayList<>();
+            ArrayList<Integer> coronas = new ArrayList<>();
+            TreeMap<Double, String> sol = new TreeMap<>();
+            for (int i = 0; i < nPlatos; i++) {
+                platos.add(sc.nextInt());
+            }
+            for (int i = 0; i < nCoronas; i++) {
+                coronas.add(sc.nextInt());
+            }
+
+            for (int i = 0; i < nPlatos; i++) {
+                for (int j = 0; j < nCoronas; j++) {
+                    double aux = (double)platos.get(i)/coronas.get(j);
+                    String aux2 = platos.get(i) + "-" + coronas.get(j);
+                    sol.put(aux, aux2);
                 }
             }
-            System.out.println(sum);
+            
+            ArrayList<String> sol2 = new ArrayList<>(sol.values());
+            for(int i=0; i<sol2.size(); i++){
+                if(i==sol2.size()-1) System.out.println(sol2.get(i));
+                else System.out.print(sol2.get(i) + " ");
+            }
+            
+            nPlatos = sc.nextInt();
+            nCoronas = sc.nextInt();
         }
     }
 }

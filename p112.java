@@ -3,10 +3,10 @@ package com.caiomed03.aceptaelreto;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class p564 {
+public class p112 {
 
     static class FastReader {
 
@@ -68,36 +68,31 @@ public class p564 {
             }
             return true;
         }
-
-        public BigInteger nextBigInteger() {
-            return new BigInteger(next());
-        }
-    }
-
-    static boolean isPowerOfTwo(int n) {
-        if (n == 0) {
-            return false;
-        }
-
-        return (int) (Math.ceil((Math.log(n) / Math.log(2))))
-                == (int) (Math.floor(((Math.log(n) / Math.log(2)))));
     }
 
     public static void main(String[] args) {
         FastReader sc = new FastReader();
-        int casosPrueba = sc.nextInt();
 
-        while (casosPrueba-- != 0) {
-            int n = sc.nextInt();
-            int sum = 0;
-            if (n < 3) {
-            } else {
-                for(int i=1; i*7<=Math.pow(2, n); i++){
-                    if(i*7<=Math.pow(2, n)) sum++;
-                    else break;
+        double distanciaEnKM = sc.nextDouble() / 1000;
+        double velocidadMax = sc.nextDouble();
+        double tiempoEnHoras = sc.nextDouble() / 3600;
+        while (!(distanciaEnKM == 0 && velocidadMax==0 && tiempoEnHoras==0)) {
+            if(distanciaEnKM<=0 || velocidadMax<=0 || tiempoEnHoras<=0){
+                System.out.println("ERROR");
+            }
+            else{
+                double velocidadCoche = distanciaEnKM/tiempoEnHoras;
+                if(velocidadCoche<velocidadMax) System.out.println("OK");
+                else{
+                    velocidadMax = velocidadMax*1.2;
+                    if(velocidadCoche<velocidadMax) System.out.println("MULTA");
+                    else System.out.println("PUNTOS");
                 }
             }
-            System.out.println(sum);
+            
+            distanciaEnKM = sc.nextDouble() / 1000;
+            velocidadMax = sc.nextDouble();
+            tiempoEnHoras = sc.nextDouble() / 3600;
         }
     }
 }
