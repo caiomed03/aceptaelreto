@@ -1,13 +1,15 @@
-
 package com.caiomed03.aceptaelreto;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.TreeSet;
 
-public class p366 {
+public class p185 {
+
     static class FastReader {
 
         BufferedReader br;
@@ -50,6 +52,7 @@ public class p366 {
             }
             return str;
         }
+
         boolean hasNext() {
             if (st != null && st.hasMoreTokens()) {
                 return true;
@@ -68,16 +71,41 @@ public class p366 {
             return true;
         }
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         FastReader sc = new FastReader();
-        int nNiños = sc.nextInt();
-        
-        while (!(nNiños == 0)) {
-            HashMap<Integer, Integer> niño = new HashMap<>();
-            for(int i=0; i<nNiños; i++){
-                niño.
+        int potitos = Integer.parseInt(sc.next());
+        while (!(potitos == 0)) {
+            TreeSet<String> ingredientesSI = new TreeSet<>();
+            TreeSet<String> ingredientesNO = new TreeSet<>();
+            for (int i = 0; i < potitos; i++) {
+                String tomado = sc.next();
+                if (tomado.equals("SI:")) {
+                    String aux = sc.next();
+                    while (!aux.equals("FIN")) {
+                        ingredientesSI.add(aux);
+                        aux = sc.next();
+                    }
+                } else {
+                    String aux = sc.next();
+                    while (!aux.equals("FIN")) {
+                        ingredientesNO.add(aux);
+                        aux = sc.next();
+                    }
+                }
             }
-            nNiños = sc.nextInt();
+            ingredientesNO.removeAll(ingredientesSI);
+            ArrayList<String> sol = new ArrayList<>(ingredientesNO);
+            if(sol.isEmpty()) System.out.println("");
+            for (int i = 0; i < sol.size(); i++) {
+                if (i == sol.size() - 1) {
+                    System.out.println(sol.get(i));
+                } else {
+                    System.out.print(sol.get(i) + " ");
+                }
+            }
+            potitos = Integer.parseInt(sc.next());
         }
+
     }
 }

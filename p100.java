@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class p100 {
@@ -32,11 +30,13 @@ public class p100 {
         }
     }
     public static String numeroDesc(String a){
+        // Ordeno los digitos del string de forma descendente
         char[] aux = a.toCharArray();
         Arrays.sort(aux);
         return (new StringBuilder(new String(aux)).reverse().toString());
     }
     public static String numeroAsc(String a){
+        // Ordeno los digitos del string de forma ascendente
         char[] aux = a.toCharArray();
         Arrays.sort(aux);
         return (new String(aux));
@@ -55,9 +55,14 @@ public class p100 {
         int casosPrueba = Integer.parseInt(sc.nextLine());
         while (casosPrueba-- != 0) {
             String numero = sc.nextLine();
+            
+            // Si el numero es menor de 1000, se le añade la cantidad de ceros
+            // necesarios.
             if(numero.length()<4) numero = Izquierda0(numero);
+            // repdigits
             if(check(numero)){System.out.println("8"); continue;}
             int cont=0;
+            // Funcion principal
             while(!numero.equals("6174")){
                 if(numero.length()<4) numero = Izquierda0(numero);
                 numero = String.valueOf(Integer.parseInt(numeroDesc(numero))-Integer.parseInt(numeroAsc(numero)));
